@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kiliku Secondary School</title>
+  <!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+
+body {
+	
+	font-weight: 400;
+	font-style: normal;
+ scroll-behavior: smooth;
+ font-family: 'Poppins', sans-serif;
+ 
+}
+  
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+    /* ===== Secondary Navbar (Top) ===== */
+    .secondary-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ccc;
+      flex-wrap: wrap;
+    }
+
+    .left-group, .right-group {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo, .right-image {
+      height: 100px;
+    }
+
+    .school-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      white-space: nowrap;
+    }
+
+    .center-group {
+      text-align: center;
+      flex: 1;
+    }
+
+    .help-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .phone {
+      font-size: 14px;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .phone i {
+      color: green;
+      margin-right: 5px;
+    }
+
+    /* ===== Main Navigation Bar ===== */
+    .main-navbar {
+      background-color: #ffffff;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-button {
+      background: none;
+      color: #333;
+      border: none;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 8px 12px;
+      position: relative;
+      transition: background-color 0.3s;
+    }
+
+    .nav-button:hover {
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      background-color: #fff;
+      color: #000;
+      min-width: 180px;
+      top: 100%;
+      left: 0;
+      z-index: 1000;
+      flex-direction: column;
+    }
+
+    .dropdown-content a {
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #333;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block; 
+  }
+
+    /* ===== Hamburger Menu (Mobile) ===== */
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+    }
+
+    #menu-toggle {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      /* Top bar stacked layout */
+      .secondary-navbar {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .left-group, .right-group {
+        justify-content: center;
+      }
+
+      .center-group {
+        flex: unset;
+      }
+
+      /* Hamburger visible */
+      .hamburger {
+        display: block;
+      }
+
+
+
+
+
+      .nav-links {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      @media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  #menu-toggle:checked + label + .nav-links {
+    display: flex;
+  }
+}
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: none; /* Disable hover open on mobile */
+      }
+
+      .dropdown-button:after {
+        content: ' ▼';
+      }
+    }
+
+.hero {
+      position: relative;
+      width: 100%;
+      height: 90vh;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .slide-text {
+      position: absolute;
+      color: rgb(255, 255, 255);
+      padding: 25px 35px;
+      bottom: 60%;
+      left: 0%;
+      max-width: 700px;
+      border-radius: 10px;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      opacity: 0;
+      
+      animation: fadeInUp 1s ease forwards;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      transform: translateY(30px);
+  text-align: center;
+}
+    
+
+    .slide.active .slide-text {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Arrows */
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0);
+      color: #fff;
+      font-size: 30px;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      z-index: 2;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .nav-arrow:hover {
+      background: rgba(0,0,0,0.0);
+    }
+
+    .prev {
+      left: 20px;
+    }
+
+    .next {
+      right: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .slide-text {
+        font-size: 1.2rem;
+        padding: 18px 25px;
+        left: 5%;
+        right: 5%;
+        bottom: 10%;
+      }
+
+      .nav-arrow {
+        font-size: 24px;
+        padding: 8px;
+      }
+    }
+
+.gallery {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .gallery img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px}
+
+
+  header {
+    background: #004d40;
+    color: white;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+/* 🔹 Blogs Section Styling */
+.blog-section {
+  padding: 50px 20px;
+  background: linear-gradient(to right, #f0f4ff, #e6f0ff);
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.section-title {
+  font-size: 28px;
+  color: #003366;
+  margin-bottom: 40px;
+}
+
+.blog-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.blog-card {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 300px;
+  padding: 25px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: left;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.blog-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.blog-icon {
+  font-size: 22px;
+  color: #0056b3;
+}
+
+.blog-card h3 {
+  font-size: 18px;
+  color: #004085;
+  margin: 0;
+}
+
+.blog-meta {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.blog-snippet {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.read-more {
+  display: inline-block;
+  font-weight: 500;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.read-more i {
+  margin-left: 6px;
+}
+
+.column {
+  flex: 1;
+ 
+  padding: 20px 5px;
+ 
+}
+ 
+.columns-section {
+  display: flex;
+  background-color: #a45555;
+  padding: 25px 20px;
+  border-top: 5px solid #004400;
+  
+}
+
+#column input,
+  #column textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccccccd7;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+
+
+.column-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.column-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.column-card {
+  background-color: #ffffff;
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.partners-section {
+  background: #f9f9f9;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.partners-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.partners-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.partner-track {
+  display: flex;
+  width: calc(250px * 10); /* adjust based on image count */
+  animation: scroll 30s linear infinite;
+}
+
+.partner-track img {
+  height: 80px;
+  width: auto;
+  margin: 0 20px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.partner-track img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .partner-track img {
+    height: 60px;
+    margin: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .partner-track img {
+    height: 50px;
+    margin: 0 10px;
+  }
+}
+
+/* Footer Styling */
+.footer {
+  background: linear-gradient(135deg, #3b5a70, #2c3e50);
+  color: #fff;
+  padding: 50px 20px 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 280px;
+  margin: 20px;
+}
+
+.footer-section h3 {
+  margin-bottom: 18px;
+  color: #ffffff;
+  font-size: 20px;
+  border-bottom: 2px solid #f2c300;
+  padding-bottom: 6px;
+  display: inline-block;
+}
+
+.footer-section p,
+.footer-section li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #e0e0e0;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li::before {
+  content: "›";
+  margin-right: 8px;
+  color: #f2c300;
+}
+
+.footer-section a {
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #f2c300;
+  transform: translateX(5px);
+}
+
+/* Social Media Icons */
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  margin-right: 10px;
+  background-color: #e2e73a;
+  color: #2c3e50;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: #fff;
+  color: #3b5a70;
+  transform: scale(1.1);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  padding-top: 25px;
+  border-top: 1px solid #555;
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section {
+    margin: 15px 0;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+/* 🔹 Testimonials Section Styling */
+.testimonials {
+  background-color: #f2f7fa;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #004085;
+}
+
+.testimonial-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.testimonial-card {
+  background-color: white;
+  border-left: 5px solid #007BFF;
+  padding: 25px;
+  width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  font-size: 16px;
+  color: #333;
+}
+
+.testimonial-card h4 {
+  margin-top: 15px;
+  color: #00539C;
+}
+
+.quote-icon {
+  font-size: 30px;
+  color: #007BFF;
+  margin-bottom: 15px;
+}
+
+.principal-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .principal-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    gap: 40px;
+  }
+  
+  .principal-text {
+    flex: 1 1 55%;
+  }
+  
+  .principal-text h1 {
+    font-size: 2.5rem;
+    color: #000000;
+    margin-bottom: 15px;
+  }
+  
+  .principal-text p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .principal-image {
+    flex: 1 1 35%;
+    text-align: right;
+  }
+  
+  .principal-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .principal-container {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+  
+    .principal-text, .principal-image {
+      flex: 1 1 100%;
+    }
+  
+    .principal-image {
+      text-align: center;
+    }
+  }
+
+  blockquote {
+ 
+  background: #eef2f7;
+  padding: 15px 20px;
+  border-left: 5px solid #3498db;
+  margin: 15px 0;
+}
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- 🔹 Secondary Navbar -->
+  <div class="secondary-navbar">
+    <!-- Left: Logo and School Name -->
+    <div class="left-group">
+      <img src="Gallery/logo.jpg" alt="Logo" class="logo">
+      <div class="school-name">KILIKU MIXED SECONDARY</div>
+    </div>
+
+    <!-- Center: Help Text + Phone -->
+    <div class="center-group">
+      <div class="help-text">Need help? Call us immediately</div>
+      <div class="phone"><i class="fas fa-phone-alt"></i> 011 423 3804</div>
+    </div>
+
+    <!-- Right: STEM Image -->
+    <div class="right-group">
+      <img src="Gallery/STEM.webp" alt="STEM" class="right-image">
+    </div>
+  </div>
+
+<!-- 🔹 Main Navigation Bar -->
+<nav class="main-navbar">
+  <!-- Hamburger Toggle Checkbox -->
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
+    <i class="fas fa-bars"></i>
+  </label>
+
+  <!-- Nav Links (Must be immediately after the checkbox and label) -->
+  <div class="nav-links">
+    <!-- Home -->
+    <a href="index.html" class="nav-button">
+      <i class="fas fa-home"></i> Home
+    </a>
+
+    <!-- About Dropdown -->
+    <div class="dropdown">
+      <button class="nav-button dropdown-button">
+        <i class="fas fa-info-circle"></i> About
+      </button>
+      <div class="dropdown-content">
+        <a href="our gallery.html"><i class="fas fa-images"></i> Our Gallery</a>
+        <a href="our history.html"><i class="fas fa-history"></i> Our History</a>
+      </div>
+    </div>
+
+    <!-- Departments Dropdown -->
+    <div class="dropdown">
+      <button class="nav-button dropdown-button">
+        <i class="fas fa-building-columns"></i> Departments
+      </button>
+      <div class="dropdown-content">
+        <a href="academics.html"><i class="fas fa-book-open"></i> Academics</a>
+        <a href="admissions.html"><i class="fas fa-user-plus"></i> Admissions</a>
+        <a href="sports and games.html"><i class="fas fa-basketball-ball"></i> Sports</a>
+        <a href="clubs and societies.html"><i class="fas fa-users"></i> Clubs and Societies</a>
+      </div>
+    </div>
+
+    <!-- Contact Us -->
+    <a href="contact us.html" class="nav-button">
+      <i class="fas fa-envelope"></i> Contact Us
+    </a>
+  </div>
+</nav>
+</section>
+
+<!-- 🔹 Hero Section -->
+<div class="hero">
+  <div class="slide active" style="background-image: url('Gallery/hero4.jpg');">
+    <div class="slide-text">"Education is the most powerful weapon you can use to change the world."</div>
+  </div>
+  <div class="slide" style="background-image: url('Gallery/hero4.jpg');">
+    <div class="slide-text">Technology will not replace great teachers, but technology in the hands of great teachers can be transformational.
+      — George Couros
+      </div>
+  </div>
+  <div class="slide" style="background-image: url('Gallery/hero3.jpg');">
+    <div class="slide-text">"Learning never exhausts the mind."</div>
+  </div>
+
+  <!-- 🔸 Navigation Arrows -->
+  <button class="nav-arrow prev"><i class="fas fa-chevron-left"></i></button>
+  <button class="nav-arrow next"><i class="fas fa-chevron-right"></i></button>
+</div>
+
+<script src="sctript1.js"></script>
+
+
+
+   <!-- 🔹 Principal's Message Section -->
+<section class="principal-section">
+  <div class="principal-container">
+    <!-- Left: Principal's Message -->
+    <div class="principal-text">
+      <h1>The principal <br>
+        ...</h1>
+      
+      <blockquote>
+      <p>
+        Welcome to KILIKU MIXED SECONDARY SCHOOL, where academic excellence meets holistic growth.
+        At our school, we strive to nurture young minds into responsible, confident, and skilled individuals. 
+        Our commitment goes beyond textbooks—we aim to shape future leaders through discipline, creativity, and technology-integrated learning.
+      </p>
+      <p>
+        With the dedicated support of our teachers and partners like Camara Education, we’ve embraced digital tools that transform the way we teach and learn.
+        Together, we are building a future where education empowers every learner to thrive in a rapidly changing world.
+      </p></blockquote>
+    </div>
+
+    <!-- Right: Principal's Image -->
+    <div class="principal-image">
+      <img src="Gallery/princi.jpg" alt="Principal of KILIKU Mixed Secondary">
+
+      <div>
+        <h3>MR.PHILIP MUTUA</h3>              
+        </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- 🔹 Student & Teacher Blogs Section -->
+<section class="blog-section">
+  <h2 class="section-title"><i class="fas fa-blog"></i> Student & Teacher Blogs</h2>
+
+  <div class="blog-container">
+
+    <!-- Blog Card 1 -->
+    <div class="blog-card">
+      <div class="blog-header">
+        <i class="fas fa-user-graduate blog-icon"></i>
+        <h3>Empowering Classrooms through technology</h3>
+      </div>
+      <p class="blog-meta">By Wambua Kelvin, ICT Dept • June 2025</p>
+      <p class="blog-snippet">  Technology is no longer just a tool in our classrooms—it’s a catalyst for creativity,
+         collaboration, and deeper learning. With the support of Camara Education,
+          our students are becoming confident digital learners....
+        
+</p>
+      <a href="kelv_ict_blog.HTML" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <!-- Blog Card 2 -->
+    <div class="blog-card">
+      <div class="blog-header">
+        <i class="fas fa-chalkboard-teacher blog-icon"></i>
+        <h3>Creating a Culture of Reading</h3>
+      </div>
+      <p class="blog-meta">By Mr Masila, English Dept. • June 2025</p>
+      <p class="blog-snippet">A reflection on how reading and debate clubs are transforming literacy and creativity in our students...</p>
+      <a href="masila_eng_blog.HTML" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <!-- Blog Card 3 -->
+    <div class="blog-card">
+      <div class="blog-header">
+        <i class="fas fa-user-graduate blog-icon"></i>
+        <h3>Lessons from Leadership </h3>
+      </div>
+      <p class="blog-meta">By Joshua L., Head Boy • June 2025</p>
+      <p class="blog-snippet">Leadership is more than a title. Here's what I have learned at the recent  that has changed my perspective...</p>
+      <a href="joshua_blog.HTML" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+  </div>
+  </section>
+
+<!-- 🔹 Testimonials Section -->
+<section class="testimonials">
+  <h2 class="section-title"><i class="fas fa-comment-dots"></i> What Our Students Say</h2>
+  
+  <div class="testimonial-container">
+    <div class="testimonial-card">
+      <i class="fas fa-user-graduate quote-icon"></i>
+      <p>"KILIKU has truly shaped my future. The teachers really care and push us to do our best."</p>
+      <h4>- Lemayian, Class of 2025</h4>
+    </div>
+
+
+    <div class="testimonial-card">
+      <i class="fas fa-star quote-icon"></i>
+      <p>"A supportive community and excellent facilities — I highly recommend it."</p>
+      <h4>- Faith M., Alumni</h4>
+    </div>
+  </div>
+</section>
+
+    <div class="partners-section">
+      <h2>Our Partners</h2>
+      <div class="partners-slider">
+        <div class="partner-track">
+          <!-- Repeat logos as needed -->
+          <img src="Gallery/KICD logo.png" alt="Partner 1">
+          <img src="Gallery/STEM.webp" alt="Partner 2">
+          <img src="Gallery/camaralogo.jpeg" alt="Partner 3">
+          <img src="Gallery/unicef logo.png" alt="Partner 4">
+          <img src="Gallery/knec logo.png" alt="Partner 5">
+          <img src="Gallery/africa sand dam.jpg" alt="Partner 6">
+          <!-- Duplicate logos for seamless looping -->
+          <img src="Gallery/KICD logo.png" alt="Partner 1">
+          <img src="Gallery/STEM.webp" alt="Partner 2">
+          <img src="Gallery/camaralogo.jpeg" alt="Partner 3">
+          <img src="Gallery/unicef logo.png" alt="Partner 4">
+          <img src="Gallery/knec logo.png" alt="Partner 5">
+          <img src="Gallery/africa sand dam.jpg" alt="Partner 6">
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+<!-- Font Awesome CDN for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section about">
+      <h3>About Us</h3>
+      <p>We are committed to providing a safe and stimulating learning environment for all students to reach their full potential.</p>
+    </div>
+
+    <!-- Quick Links Section -->
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="Admissions.html">Admissions</a></li>
+        <li><a href="https://camara.org/">Camara</a></li>
+        <li><a href="Contact Us.html">Contact Us</a></li>
+
+
+      </ul>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="footer-section contact">
+      <h3>Contact Us</h3>
+      <p>Email: kilikusecondaryict@Gmail.com</p>
+      <p>Phone: 011 423 3804</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/kilikusecondary"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/YourUsername"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/kiliku_mixed_secondary"><i class="fab fa-instagram"></i></a>
+        
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Kiliku Secondary School. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
